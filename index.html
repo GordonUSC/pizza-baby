@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en" data-look="box">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pizza Baby Reviews</title>
+<meta name="description" content="Born a meme. Now a critic. Pizza Baby's verdicts, the merch drop, and the story of the newborn the internet swapped for a slice.">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta property="og:title" content="Pizza Baby Reviews">
+<meta property="og:description" content="Born a meme. Now a critic.">
+<meta property="og:image" content="art/hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Shrikhand&family=Sacramento&family=Nunito:wght@400;700;800&family=Rethink+Sans:ital,wght@0,400;0,600;0,800;1,400&family=Caveat+Brush&family=Martian+Mono:wght@500;700&display=swap" rel="stylesheet">
+<!-- STYLE: Look A "Box Press" = Corita Kent serigraph joy (Twenty Design Systems #9: joy, a rule stated warmly; chunky black type + hand marker) printed on a pizza-box lid; Look B "Pizza Baby Diaries" = built from Sofia's own Pinterest board pizza-baby-diaries (cream, blush, olive, hand-lettered script, candy-named palette, doodle mascots, polka dots) | WHY: she was born a meme and loves making people laugh; she chooses between the two live | ALT: a tabloid food-section front page (Scher volume) -->
+<style>
+/* Layout: a stack of pizza-box lids. Each section is a lid: a bold stamped header strip, then the contents. Stickers overlap edges on purpose. */
+:root{
+  --tomato:#e5321c; --sauce:#a3170a; --mozz:#fff5e3; --crust:#f4b740; --basil:#23753a; --char:#1b1411; --grease:#f6e2bf; --ink:#1b1411; --paper:#fff5e3; --muted:#6c5a4f; --card:#ffffff;
+  --display:"Bowlby One",Impact,"Arial Black",sans-serif;
+  --body:"Rethink Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hand:"Caveat Brush","Comic Sans MS",cursive;
+  --mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1b1411;--ink:#fff5e3;--muted:#cdb8a6;--card:#2a201b;--grease:#3a2b23;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#1b1411;--ink:#fff5e3;--muted:#cdb8a6;--card:#2a201b;--grease:#3a2b23;color-scheme:dark}
+/* LOOK B "Pizza Baby Diaries": built from Sofia's own Pinterest board (olive, bubblegum, buttercream, cowgirl doodles, swirly script) */
+html[data-look="diaries"]{--tomato:#ec6f9c;--sauce:#c24d79;--mozz:#fff4f7;--crust:#fbe29a;--basil:#7a7b2b;--char:#4b4c1d;--grease:#fbeef2;--display:"Shrikhand",Georgia,serif;--hand:"Sacramento","Brush Script MT",cursive;--body:"Nunito",system-ui,sans-serif}
+html[data-look="diaries"] h1,html[data-look="diaries"] h2,html[data-look="diaries"] h3{text-transform:none;letter-spacing:0}
+html[data-look="diaries"] .hero{background:var(--basil)}
+html[data-look="diaries"] .hero h1 span{color:var(--crust)}
+html[data-look="diaries"] .btn{border-radius:999px;border-width:2px;box-shadow:3px 3px 0 var(--char)}
+html[data-look="diaries"] .vcard,html[data-look="diaries"] .item{border-width:2px;border-radius:26px;box-shadow:0 10px 0 #ec6f9c33}
+html[data-look="diaries"] .marquee{background:var(--tomato);color:var(--mozz)}
+html[data-look="diaries"] .lore{background:var(--basil)}
+html[data-look="diaries"] .hand{font-size:34px}
+html[data-look="diaries"] body{background-image:radial-gradient(#ec6f9c22 2px,transparent 2.5px);background-size:26px 26px}
+[data-only]{display:none!important}
+html[data-look="box"] [data-only="box"],html[data-look="diaries"] [data-only="diaries"]{display:revert!important}
+.looks{position:fixed;left:50%;translate:-50% 0;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;gap:4px;align-items:center;background:var(--char);color:var(--mozz);border-radius:999px;padding:6px;box-shadow:0 10px 30px #0005;max-width:calc(100vw - 24px)}
+.looks span{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:0 10px;white-space:nowrap}
+.looks button{appearance:none;border:0;border-radius:999px;padding:10px 14px;font:800 14px var(--body);background:transparent;color:var(--mozz);cursor:pointer;min-height:44px;white-space:nowrap}
+.looks button[aria-pressed="true"]{background:var(--crust);color:var(--char)}
+@media (max-width:480px){.looks span{display:none}}
+.toast{position:fixed;left:50%;top:84px;translate:-50% 0;z-index:60;background:var(--char);color:var(--crust);font:400 20px var(--display);padding:12px 18px;border-radius:999px;box-shadow:4px 4px 0 var(--tomato);opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+.polaroid img.mascot{aspect-ratio:auto;object-fit:contain;border-radius:0}
+.mascot{position:absolute;width:clamp(96px,14vw,150px)!important;right:-6px;bottom:-34px;transform:rotate(8deg);filter:drop-shadow(3px 4px 0 #0003)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--crust);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:-.01em;text-wrap:balance;margin:0;text-transform:uppercase}
+p{margin:0}
+.wrap{padding-inline:max(16px,calc((100vw - 1160px)/2))}
+.stamp{font:700 12px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.hand{font-family:var(--hand);font-size:24px;line-height:1.1;color:var(--tomato)}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:30;background:var(--tomato);color:var(--mozz);padding-top:env(safe-area-inset-top,0px)}
+.top .in{display:flex;gap:14px;align-items:center;justify-content:space-between;padding-block:10px}
+.logo{font:400 22px var(--display);white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px;letter-spacing:.02em}
+.logo i{font-style:normal;background:var(--mozz);color:var(--tomato);border-radius:999px;width:34px;height:34px;display:grid;place-items:center;font-size:18px}
+.nav{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.nav a,.nav button{font:800 14px var(--body);text-decoration:none;color:var(--mozz);background:none;border:0;padding:10px 12px;border-radius:999px;cursor:pointer;min-height:44px}
+.nav a:hover,.nav button:hover{background:#ffffff22}
+.bagbtn{background:var(--char)!important;display:inline-flex;gap:8px;align-items:center}
+.bagbtn b{background:var(--crust);color:var(--char);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+@media (max-width:720px){.top .in{flex-wrap:wrap;row-gap:2px;padding-block:6px}.nav{width:100%;justify-content:space-between;gap:0}.nav a.opt{display:none}.nav a,.nav button{font-size:13px;padding:8px 9px}}
+
+/* hero: a box lid */
+.hero{background:var(--tomato);color:var(--mozz);position:relative;overflow:hidden}
+.hero .in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;padding-block:clamp(20px,3.5vw,44px) clamp(88px,9vw,112px)}
+.hero h1{font-size:clamp(46px,min(7.4vw,11vh),108px);color:var(--mozz)}
+html[data-look="diaries"] .hero h1{font-size:clamp(42px,min(6.2vw,9.5vh),90px)}
+@media (min-width:900px){.looks{top:76px;bottom:auto;left:auto;right:16px;translate:none}}
+.hero .gifted{font:600 13px var(--mono);letter-spacing:.04em;opacity:.9;margin-top:14px}
+.hero .taste{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-top:16px;padding:10px 14px;border:2px solid currentColor;border-radius:14px;max-width:44ch;font-size:15px}
+.hero .taste b{font:700 12px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.hero h1 span{display:block;color:var(--char);-webkit-text-stroke:0}
+.hero .lede{font-size:clamp(18px,2vw,22px);max-width:40ch;margin-top:18px;color:#fff3e6}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:800 16px var(--body);text-decoration:none;padding:14px 22px;border-radius:999px;border:3px solid var(--char);background:var(--crust);color:var(--char);box-shadow:4px 4px 0 var(--char);cursor:pointer;min-height:50px;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--char)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--char)}
+.btn.ghost{background:var(--mozz)}
+.polaroid{background:var(--mozz);padding:12px 12px 46px;border-radius:6px;box-shadow:10px 14px 0 #00000033;transform:rotate(2.2deg);position:relative}
+.polaroid img{border-radius:3px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.polaroid .hand{position:absolute;left:16px;bottom:10px;color:var(--char)}
+.sticker{position:absolute;font:400 15px var(--display);background:var(--crust);color:var(--char);border:3px solid var(--char);border-radius:999px;padding:12px 16px;box-shadow:3px 3px 0 var(--char);text-align:center;line-height:1}
+.sticker.s1{right:-10px;top:-18px;transform:rotate(9deg)}
+.sticker.s2{left:-18px;bottom:52px;transform:rotate(-8deg);background:var(--basil);color:var(--mozz)}
+.marquee{background:var(--char);color:var(--crust);overflow:hidden;white-space:nowrap;border-block:3px solid var(--char)}
+.marquee div{display:inline-block;padding-block:12px;font:400 18px var(--display);letter-spacing:.06em;animation:roll 30s linear infinite}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* section lids */
+section{padding-block:clamp(48px,7vw,96px)}
+.lid{display:flex;gap:16px;align-items:end;justify-content:space-between;flex-wrap:wrap;border-bottom:4px solid var(--ink);padding-bottom:14px;margin-bottom:28px}
+.lid h2{font-size:clamp(38px,6vw,76px)}
+.lid .stamp{color:var(--tomato)}
+
+/* verdicts */
+.verdicts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px}
+.vcard{background:var(--card);border:3px solid var(--ink);border-radius:18px;padding:22px;display:grid;gap:12px;box-shadow:6px 6px 0 var(--ink);position:relative}
+.vcard .kind{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.vcard h3{font-size:28px}
+.slices{font-size:20px;letter-spacing:1px;display:flex;flex-wrap:wrap;gap:2px}
+.slices .off{opacity:.22;filter:grayscale(1)}
+.vcard blockquote{margin:0;font-size:19px;line-height:1.45}
+.vcard .note{font:12px var(--mono);color:var(--muted)}
+.vcard.sample{border-style:dashed;box-shadow:6px 6px 0 var(--crust)}.tagsample{justify-self:start;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--crust);color:var(--char);padding:5px 10px;border-radius:999px}
+.empty{border:3px dashed var(--ink);border-radius:18px;padding:22px;display:grid;gap:10px}
+
+/* critic's desk tool */
+.desk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.form{display:grid;gap:14px}
+.form label{display:grid;gap:6px;font-weight:800}
+.form input[type=text],.form textarea,.form select{font:400 17px var(--body);padding:12px 14px;border:3px solid var(--ink);border-radius:12px;background:var(--card);color:var(--ink);width:100%}
+.form textarea{min-height:92px;resize:vertical}
+.rate{display:grid;grid-template-columns:90px 1fr 40px;gap:10px;align-items:center;font-weight:800}
+.rate input{accent-color:var(--tomato);width:100%}
+.coach{background:var(--grease);border-radius:14px;padding:14px 16px;font-size:16px;display:grid;gap:6px}
+.coach b{color:var(--tomato)}
+.card-out{background:var(--tomato);color:var(--mozz);border:4px solid var(--char);border-radius:22px;padding:24px;box-shadow:8px 8px 0 var(--char);display:grid;gap:12px;position:sticky;top:90px}
+.card-out .stamp{color:var(--crust)}
+.card-out h3{font-size:clamp(30px,4vw,44px);color:var(--mozz)}
+.card-out .big{font:400 clamp(26px,3vw,34px)/1.15 var(--body);font-weight:800}
+.card-out .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font:700 12px var(--mono);text-align:center}
+.card-out .scores span{background:#00000026;border-radius:10px;padding:8px 4px}
+.card-out .scores b{display:block;font:400 22px var(--display)}
+.card-out .sig{font-family:var(--hand);font-size:26px;color:var(--crust)}
+
+/* merch */
+.shop{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:22px}
+.item{background:var(--card);border:3px solid var(--ink);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;box-shadow:6px 6px 0 var(--ink)}
+.item img{aspect-ratio:4/5;object-fit:cover;width:100%;border-bottom:3px solid var(--ink)}
+.item .in{padding:16px;display:grid;gap:8px;align-content:start}
+.item h3{font-size:22px}
+.item p{font-size:16px;color:var(--muted)}
+.item .buy{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:6px}
+.price{font:400 24px var(--display)}
+.item select{font:600 15px var(--body);padding:8px 10px;border:2px solid var(--ink);border-radius:10px;background:var(--card);color:var(--ink);min-height:44px}
+.item .btn{padding:10px 16px;min-height:44px;font-size:15px}
+.shopnote{margin-top:22px;font-size:16px;color:var(--muted);max-width:70ch}
+
+/* bag drawer */
+.drawer{position:fixed;inset:auto 0 0 auto;top:0;width:min(420px,100%);background:var(--paper);border-left:4px solid var(--ink);z-index:50;transform:translateX(105%);transition:transform .3s;display:grid;grid-template-rows:auto 1fr auto;padding-top:env(safe-area-inset-top,0px)}
+.drawer.open{transform:none}
+.drawer header,.drawer footer{padding:18px;border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.drawer footer{border-top:3px solid var(--ink);border-bottom:0;display:grid;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+.drawer ul{list-style:none;margin:0;padding:12px 18px;overflow:auto;display:grid;gap:10px;align-content:start}
+.drawer li{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.drawer li img{width:64px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--ink)}
+.drawer li button{background:none;border:0;font:700 13px var(--mono);color:var(--tomato);cursor:pointer;min-height:44px}
+.x{background:none;border:0;font:400 28px var(--display);cursor:pointer;color:var(--ink);min-width:44px;min-height:44px}
+.scrim{position:fixed;inset:0;background:#0006;z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.checkout-msg{background:var(--grease);border-radius:12px;padding:12px;font-size:15px}
+
+/* lore */
+.lore{background:var(--char);color:var(--mozz)}
+.lore .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.lore h2{font-size:clamp(40px,6vw,80px);color:var(--crust)}
+.lore p{font-size:20px;max-width:46ch;color:#f7e6d4}
+.lore .seal{width:min(320px,80%);justify-self:center;transform:rotate(-6deg);border-radius:50%;border:4px solid var(--crust);box-shadow:0 0 0 10px var(--char),0 0 0 14px var(--crust)}
+
+/* radar + pitch */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.radar{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.radar li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:14px;border:3px solid var(--ink);border-radius:14px;background:var(--card)}
+.radar time{font:700 12px var(--mono);background:var(--tomato);color:var(--mozz);padding:8px 10px;border-radius:10px;text-align:center;line-height:1.3;min-width:90px}
+.pitch{background:var(--crust);color:var(--char);border:4px solid var(--char);border-radius:22px;padding:26px;display:grid;gap:14px;box-shadow:8px 8px 0 var(--char)}
+.pitch h3{font-size:clamp(30px,4vw,46px)}
+.rules{display:flex;flex-wrap:wrap;gap:8px}
+.rules span{background:var(--char);color:var(--crust);font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:999px}
+
+/* for sofia */
+.gift{background:var(--grease)}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+.plan div{background:var(--card);border:3px solid var(--ink);border-radius:16px;padding:18px;display:grid;gap:8px}
+.plan h3{font-size:22px}
+.plan p{font-size:16px}
+
+footer.site{background:var(--tomato);color:var(--mozz);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;font-size:15px}
+footer.site b{font:400 28px var(--display)}
+
+@media (max-width:860px){
+  .launch{grid-template-columns:1fr!important}
+  .hero .in,.desk,.lore .in,.two{grid-template-columns:1fr}
+  .card-out{position:static}
+  .polaroid{transform:rotate(1.2deg);margin-inline:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* joy layer */
+@keyframes wiggle{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2.5deg)}}
+@keyframes hop{0%,100%{transform:rotate(8deg) translateY(0)}50%{transform:rotate(4deg) translateY(-14px)}}
+@keyframes popin{0%{transform:scale(0) rotate(-30deg);opacity:0}70%{transform:scale(1.25) rotate(8deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--rot));opacity:.9}}
+#baby{animation:wiggle 3.2s ease-in-out infinite}
+.mascot{animation:hop 1.8s ease-in-out infinite}
+.vcard .slices span{display:inline-block}
+html.js .vcard:not(.in) .slices span{transform:scale(0)}
+.vcard.in .slices span{animation:popin .45s cubic-bezier(.2,1.6,.4,1) forwards}
+.sticker{cursor:grab;touch-action:none;user-select:none;z-index:3}
+.sticker:active{cursor:grabbing}
+.vcard,.item{transition:transform .15s ease-out,box-shadow .15s}
+.confetti{position:fixed;top:-40px;z-index:80;pointer-events:none;font-size:26px;animation:fall var(--t) cubic-bezier(.3,.6,.5,1) forwards}
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin:0 0 28px}
+.lines article{background:var(--mozz);color:var(--ink);border:3px solid var(--ink);border-radius:20px;padding:18px;display:grid;gap:8px;align-content:start;box-shadow:5px 5px 0 var(--ink)}
+.lines h3{font-size:clamp(24px,2.6vw,32px)}
+.lines .poster{width:100%;aspect-ratio:4/5;object-fit:cover;margin:-4px 0 6px;border:3px solid var(--ink)}
+html[data-look="diaries"] .lines .poster{border-radius:18px;border-width:2px}
+html[data-look="box"] #drop .lines article::after{inset:-12px -12px auto 50%;height:34%}
+#drop{overflow-x:clip}
+html[data-look="box"] .lines .poster{position:relative;border:0;transform:rotate(-1.2deg);box-shadow:8px 6px 0 color-mix(in srgb,var(--ink-b,#ff6a4d) 60%,transparent)}
+.lines summary{cursor:pointer;font-weight:800;min-height:40px;display:flex;align-items:center}
+.lines details p{font-style:italic;margin:6px 0}
+.lines a{color:var(--tomato);font-weight:800}
+.spin{display:grid;gap:16px;justify-items:center;text-align:center;background:var(--char);color:var(--mozz);border-radius:26px;padding:clamp(24px,4vw,40px);border:4px solid var(--ink)}
+.spin h2{font-size:clamp(34px,5vw,60px);color:var(--crust)}
+.wheel{font:400 clamp(26px,4vw,44px)/1.1 var(--display);min-height:2.4em;display:grid;place-items:center;max-width:24ch;color:var(--mozz)}
+.wheel.go{animation:wiggle .18s linear infinite}
+.vcard.pick{outline:6px solid var(--crust);outline-offset:4px}
+
+/* LOOK A, done as Corita Kent actually printed: flat inks pulled one over another (multiply), slightly off register,
+   hand lettering, square cut paper. FORBIDS in this look: typewriter caps labels, rounded cards with drop shadows, pill buttons. */
+html[data-look="box"] .stamp,html[data-look="box"] .vcard .kind,html[data-look="box"] .tagsample,html[data-look="box"] .lines .stamp{font:400 clamp(19px,1.8vw,24px)/1.05 var(--hand);letter-spacing:0;text-transform:none}
+html[data-look="box"] .lid .stamp{transform:rotate(-2deg)}
+/* the first screen gets the same print: two ink pulls behind the photo, the headline printed twice off register */
+html[data-look="box"] .hero .in{position:relative;isolation:isolate}
+html[data-look="box"] .hero .in::before{content:"";position:absolute;z-index:-1;right:6%;top:12%;width:min(40vw,520px);aspect-ratio:1;border-radius:50%;background:#ffd95e;mix-blend-mode:multiply;opacity:.9}
+html[data-look="box"] .hero .in::after{content:"";position:absolute;z-index:-1;right:22%;top:46%;width:min(26vw,330px);height:min(18vw,230px);background:#ff8fb1;mix-blend-mode:multiply;opacity:.85;transform:rotate(-7deg)}
+html[data-look="box"] .hero h1{text-shadow:6px 5px 0 color-mix(in srgb,#ffd95e 85%,transparent)}
+html[data-look="box"] .hero h1 span{text-shadow:6px 5px 0 color-mix(in srgb,#ff8fb1 80%,transparent)}
+html[data-look="box"] .polaroid{border-radius:0;box-shadow:none}
+html[data-look="box"] .hero .taste b{font:400 22px/1 var(--hand);letter-spacing:0;text-transform:none}
+@media (max-width:820px){html[data-look="box"] .hero .in::before{width:70vw;top:auto;bottom:4%;right:-10%}html[data-look="box"] .hero .in::after{display:none}}
+html[data-look="diaries"] .stamp,html[data-look="diaries"] .vcard .kind,html[data-look="diaries"] .tagsample{font:800 14px/1.3 var(--body);letter-spacing:.01em;text-transform:none}
+html[data-look="box"] .btn{border-radius:0;border:0;box-shadow:7px 5px 0 color-mix(in srgb,var(--tomato) 70%,transparent);transform:rotate(-.6deg)}
+html[data-look="box"] .btn.ghost{background:var(--mozz);box-shadow:7px 5px 0 color-mix(in srgb,var(--crust) 85%,transparent)}
+html[data-look="box"] .btn:hover{transform:rotate(-.6deg) translate(-2px,-2px)}
+html[data-look="box"] .nav a,html[data-look="box"] .nav button{border-radius:0}
+html[data-look="box"] .vcard,html[data-look="box"] .item,html[data-look="box"] .plan div,html[data-look="box"] .lines article{border:0;border-radius:0;box-shadow:none;isolation:isolate;position:relative;background:transparent}
+html[data-look="box"] .vcard::before,html[data-look="box"] .item::before,html[data-look="box"] .plan div::before,html[data-look="box"] .lines article::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--ink-a,var(--crust))}
+html[data-look="box"] .vcard::after,html[data-look="box"] .item::after,html[data-look="box"] .plan div::after,html[data-look="box"] .lines article::after{content:"";position:absolute;inset:auto -10px -10px 46%;height:42%;z-index:-1;background:var(--ink-b,var(--tomato));mix-blend-mode:multiply;opacity:.8;pointer-events:none}
+html[data-look="box"] .verdicts > :nth-child(4n+1),html[data-look="box"] .shop > :nth-child(4n+1),html[data-look="box"] .plan > :nth-child(4n+1),html[data-look="box"] .lines > :nth-child(3n+1){--ink-a:#ffd95e;--ink-b:#ff6a4d;transform:rotate(-1deg)}
+html[data-look="box"] .verdicts > :nth-child(4n+2),html[data-look="box"] .shop > :nth-child(4n+2),html[data-look="box"] .plan > :nth-child(4n+2),html[data-look="box"] .lines > :nth-child(3n+2){--ink-a:#ffc2d1;--ink-b:#ffd23f;transform:rotate(.8deg)}
+html[data-look="box"] .verdicts > :nth-child(4n+3),html[data-look="box"] .shop > :nth-child(4n+3),html[data-look="box"] .plan > :nth-child(4n+3),html[data-look="box"] .lines > :nth-child(3n+3){--ink-a:#a9dcff;--ink-b:#ff8fb1;transform:rotate(-.5deg)}
+html[data-look="box"] .verdicts > :nth-child(4n+4),html[data-look="box"] .shop > :nth-child(4n+4),html[data-look="box"] .plan > :nth-child(4n+4){--ink-a:#fff3d6;--ink-b:#4fbf7a;transform:rotate(1.1deg)}
+html[data-look="box"] .vcard,html[data-look="box"] .item,html[data-look="box"] .plan div,html[data-look="box"] .lines article{color:#1b1411}
+html[data-look="box"] .vcard .kind,html[data-look="box"] .item p,html[data-look="box"] .vcard .note{color:#3b2a20}
+html[data-look="box"] .item img{border-bottom:0;mix-blend-mode:multiply}
+html[data-look="box"] .item select{border-radius:0;background:#fff8}
+html[data-look="box"] .vcard.sample::before{background:repeating-linear-gradient(-45deg,var(--ink-a,#fff3d6) 0 14px,#fff6 14px 22px)}
+html[data-look="box"] .lid{border-bottom:0;background:linear-gradient(var(--tomato),var(--tomato)) left bottom/100% 6px no-repeat,linear-gradient(color-mix(in srgb,var(--crust) 80%,transparent),color-mix(in srgb,var(--crust) 80%,transparent)) 9px calc(100% + 5px)/100% 6px no-repeat}
+html[data-look="box"] .lid h2{text-shadow:5px 4px 0 color-mix(in srgb,var(--crust) 75%,transparent)}
+html[data-look="box"] .hero .taste{border-radius:0;border-width:3px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"])[data-look="box"] .vcard,:root:not([data-theme="light"])[data-look="box"] .item{color:#1b1411}}
+@media (prefers-reduced-motion:reduce){#baby,.mascot,.wheel.go{animation:none}.vcard .slices span{transform:none}.confetti{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="in wrap">
+    <a class="logo" href="#top"><i>🍕</i>PIZZA BABY</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#verdicts" class="opt">Verdicts</a>
+      <a href="#drop">The Drop</a>
+      <a href="#lore" class="opt">The Lore</a>
+      <a href="#pitch" class="opt">Pitch Me</a>
+      <button type="button" id="jingle" aria-pressed="false" class="opt">Music off</button><button type="button" id="pops" aria-pressed="false" class="opt">Effects off</button>
+      <button type="button" class="bagbtn" id="bagbtn" aria-controls="drawer">Bag <b id="bagcount">0</b></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0" data-note="Hero and first impression">
+  <div class="in wrap">
+    <div data-note-slot>
+      <p class="stamp" data-only="box">The Original, Since 2009</p><p class="hand" data-only="diaries" style="color:var(--crust)">the pizza baby diaries</p>
+      <h1>Born a meme. <span>Now a critic.</span></h1>
+      <p class="lede">As a newborn, my photo went viral, except they replaced me with a pizza slice. Honestly? Iconic. Now I review the food that replaced me.</p>
+      <div class="cta"><a class="btn" href="#verdicts">Read a verdict</a><a class="btn ghost" href="#drop">See the merch ideas</a></div>
+      <p class="taste"><b>Latest: Laufey, 8 of 8</b> <span>"I was not prepared. I thought I was prepared. I was not."</span></p>
+      <p class="gifted">A gift concept from Gordon's team for Sofia. Her published verdicts, our proposed design.</p>
+    </div>
+    <figure class="polaroid" style="margin:0">
+      <img data-only="box" id="baby" src="art/hero.webp" alt="A pepperoni pizza slice swaddled like a newborn in a striped hospital blanket and knit beanie, in a bassinet labeled Born 2009">
+      <img data-only="diaries" src="art/b-scene.webp" alt="A hand-drawn pizza-crust castle, a pink polka-dot pony and cowgirl-hat pizza slices among sparkle stars"><span class="hand" data-only="box">day one. already iconic.</span><span class="hand" data-only="diaries">dear diary: still iconic.</span><img class="mascot" data-only="diaries" src="art/b-mascot.webp" alt="" aria-hidden="true">
+      <span class="sticker s1" data-only="box">MEME<br>CERTIFIED</span><span class="sticker s1" data-only="diaries">8 slices<br>or bust</span>
+      <span class="sticker s2">OG<br>2009</span>
+    </figure>
+  </div>
+  <div class="marquee" aria-hidden="true"><div>UNFILTERED ★ UNAPOLOGETIC ★ HUNGRY ★ NO SPONSORS ★ NO FREE MEALS ★ JUST THE TRUTH ★ UNFILTERED ★ UNAPOLOGETIC ★ HUNGRY ★ NO SPONSORS ★ NO FREE MEALS ★ JUST THE TRUTH ★&nbsp;</div></div>
+</section>
+
+<section id="verdicts" class="wrap" data-note="Verdict cards">
+  <div class="lid"><h2>Latest verdicts</h2><p class="stamp">Rated in slices, 8 is a whole pizza</p></div>
+  <div class="verdicts"><article class="vcard"><p class="kind">Concert, NRG Stadium, Houston</p><h3>Taylor Swift, The Eras Tour</h3><div class="slices" role="img" aria-label="8 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span></div><blockquote>I have been to a lot of concerts. I have never been to anything like this. I don't give 8 slices lightly. This one was never in question.</blockquote></article><article class="vcard"><p class="kind">Album, Everywhere</p><h3>ABBA, The Visitors</h3><div class="slices" role="img" aria-label="8 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span></div><blockquote>ABBA made their best album when they had nothing left to lose and everything to process. This one deserved better from history and I'm correcting the record.</blockquote></article><article class="vcard"><p class="kind">Concert, Toyota Center, Houston</p><h3>Kacey Musgraves, Houston</h3><div class="slices" role="img" aria-label="8 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span></div><blockquote>Her voice is the production. Eight slices. No notes. Houston showed up.</blockquote></article><article class="vcard"><p class="kind">Concert, Moody Center, Austin</p><h3>Kacey Musgraves, Austin</h3><div class="slices" role="img" aria-label="7 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span></div><blockquote>Seven slices. The missing slice is the drive back on I-10 at midnight.</blockquote></article><article class="vcard"><p class="kind">Concert, Toyota Center, Houston</p><h3>Laufey</h3><div class="slices" role="img" aria-label="8 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span></div><blockquote>I was not prepared. I thought I was prepared. I was not.</blockquote></article><article class="vcard"><p class="kind">Concert, 713 Music Hall, Houston</p><h3>Morrissey, Halloween Night</h3><div class="slices" role="img" aria-label="6 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span><span class="off">🍕</span></div><blockquote>This is either the most on-brand thing I've ever done or a cry for help. Probably both.</blockquote></article><article class="vcard"><p class="kind">Album, Everywhere</p><h3>Sabrina Carpenter, Short n' Sweet</h3><div class="slices" role="img" aria-label="7 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span></div><blockquote>Seven slices. The missing one is because I needed more.</blockquote></article><article class="vcard"><p class="kind">Pizza spot, Houston, TX</p><h3>Napoli Pizza</h3><div class="slices" role="img" aria-label="7 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span></div><blockquote>The margherita is the move. Don't overthink it. Seven slices. The missing one is because I had to share and I didn't want to.</blockquote></article><article class="vcard"><p class="kind">Concert, Aragon Ballroom, Chicago</p><h3>Chappell Roan, Midwest Princess Tour</h3><div class="slices" role="img" aria-label="7 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span></div><blockquote>One slice off because the opener ran 20 minutes over and I was standing the whole time. My feet have opinions.</blockquote></article></div><p class="note" style="margin-top:18px">From pizzababyreviews.com, as published. Eight slices is a whole pizza: the highest honor there is.</p>
+  <div class="lid" style="margin-top:56px"><h2 style="font-size:clamp(30px,4.5vw,54px)">Samples for the semester</h2><p class="stamp">Starter verdicts in her format, not real reviews</p></div>
+  <div class="verdicts"><article class="vcard sample"><p class="kind">Dining hall, Tuesday</p><h3>Dining Hall Pepperoni</h3><div class="slices" role="img" aria-label="5 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span><span class="off">🍕</span><span class="off">🍕</span></div><blockquote>The cheese had given up before I got there. The crust had not, and I respect a crust that shows up for work. Five slices. Three of them are for the crust's attitude.</blockquote><span class="tagsample">Sample verdict</span></article><article class="vcard sample"><p class="kind">Late night, 1:14 a.m.</p><h3>Gas Station Slice, Under the Heat Lamp</h3><div class="slices" role="img" aria-label="6 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span><span class="off">🍕</span></div><blockquote>I didn't choose this slice. It chose me, at a moment of weakness and a quarter tank. Six slices. Two are pure gratitude.</blockquote><span class="tagsample">Sample verdict</span></article><article class="vcard sample"><p class="kind">Taste test, Dorm microwave</p><h3>Frozen Pizza vs. the Microwave</h3><div class="slices" role="img" aria-label="3 of 8 slices"><span>🍕</span><span>🍕</span><span>🍕</span><span class="off">🍕</span><span class="off">🍕</span><span class="off">🍕</span><span class="off">🍕</span><span class="off">🍕</span></div><blockquote>The box promised a rising crust. Nothing rose. Not the crust, not my spirits. Three slices, and one of them is for the box art.</blockquote><span class="tagsample">Sample verdict</span></article></div>
+  <p class="note" style="margin-top:18px">Written by Gordon's team in her style as templates for college-life reviews. Every score is out of 8 slices, the way she rates. Replace, rewrite or roast them.</p>
+</section>
+
+<section class="wrap" style="padding-top:0" data-note="Deal me a verdict">
+  <div class="spin">
+    <p class="stamp" style="color:var(--crust)">Need a new obsession?</p>
+    <h2>Deal me a verdict</h2>
+    <p class="wheel" id="wheel" aria-live="polite">Let Pizza Baby decide.</p>
+    <button class="btn" type="button" id="spinbtn">Deal one 🍕</button>
+    <a class="btn ghost" id="spingo" href="https://www.pizzababyreviews.com/reviews" hidden>Read the full review on pizzababyreviews.com</a>
+  </div>
+</section>
+<section id="desk" class="wrap" style="padding-top:0" data-note="Critic's desk">
+  <div class="lid"><h2>The critic's desk</h2><p class="stamp">Draft a verdict, see the card</p></div>
+  <div class="desk">
+    <form class="form" id="vform" onsubmit="return false">
+      <label for="f-spot">The spot or the snack<input type="text" id="f-spot" value="Your next slice" maxlength="60"></label>
+      <label for="f-kind">What is it?<select id="f-kind"><option>Pizza spot</option><option>Concert</option><option>Album</option><option>Music festival</option><option>Snack product</option></select></label>
+      <p class="stamp" style="color:var(--muted)">For a show, read Crust as the opener, Sauce the set, Cheese the crowd.</p><div class="rate"><span>Crust</span><input type="range" id="r-crust" min="1" max="8" value="7" aria-label="Crust"><b id="o-crust">7</b></div>
+      <div class="rate"><span>Sauce</span><input type="range" id="r-sauce" min="1" max="8" value="6" aria-label="Sauce"><b id="o-sauce">6</b></div>
+      <div class="rate"><span>Cheese</span><input type="range" id="r-cheese" min="1" max="8" value="6" aria-label="Cheese"><b id="o-cheese">6</b></div>
+      <div class="rate"><span>Vibe</span><input type="range" id="r-vibe" min="1" max="8" value="8" aria-label="Vibe"><b id="o-vibe">8</b></div>
+      <label for="f-line">Your one-line verdict<textarea id="f-line" maxlength="140">Type the sentence you'd want screenshotted.</textarea></label>
+      <div class="coach" aria-live="polite"><b>Editor's note</b><span id="coach">Lead with what it did to you, not what it was.</span></div>
+    </form>
+    <div class="card-out" aria-live="polite">
+      <p class="stamp" id="c-kind">Pizza spot</p>
+      <h3 id="c-spot">Your next slice</h3>
+      <div class="slices" id="c-slices" aria-label="Overall rating"></div>
+      <p class="stamp" id="c-cap" style="color:var(--crust)"></p><p class="big" id="c-line"></p>
+      <div class="scores"><span>CRUST<b id="s-crust">4</b></span><span>SAUCE<b id="s-sauce">4</b></span><span>CHEESE<b id="s-cheese">3</b></span><span>VIBE<b id="s-vibe">5</b></span></div>
+      <p class="sig">Pizza Baby</p>
+      <p class="stamp" style="color:var(--mozz);opacity:.8">Screenshot it. Post it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="drop" style="background:var(--grease)" data-note="Merch store">
+  <div class="wrap" data-note-slot>
+    <div class="lid"><h2><span data-only="box">The drop</span><span data-only="diaries">The diaries shop</span></h2><p class="stamp">Merch concepts, preview prices, not for sale yet</p></div>
+    <div class="lines" aria-label="The lines behind the designs">
+      <article><img class="poster" src="art/poster-feet.webp" alt="Screen-print poster concept: My feet have opinions, 7 of 8 slices, two dancing sneakers and a pizza slice" loading="lazy"><p class="stamp">The line behind the design, Chappell Roan, 7 of 8</p><h3>My feet have opinions.</h3><p>Concept: dance-floor socks, the 8-slice scale on the sole.</p><details><summary>Where it came from</summary><p>"One slice off because the opener ran 20 minutes over and I was standing the whole time. My feet have opinions."</p><a href="https://www.pizzababyreviews.com/reviews">Read the review</a></details></article>
+      <article><img class="poster" src="art/poster-slice.webp" alt="Screen-print poster concept: The missing slice is personal, a pizza of eight slices with one left empty" loading="lazy"><p class="stamp">The line behind the design, a proposal, not a quote</p><h3>The missing slice is personal.</h3><p>Concept: seven filled slices and one outlined space, as a seal for tees and stickers.</p><details><summary>Where it came from</summary><p>Every 7 of 8 she gives comes with a very specific reason: the I-10 drive at midnight, having to share, needing more.</p><a href="https://www.pizzababyreviews.com/reviews">Read the reviews</a></details></article>
+      <article><img class="poster" src="art/poster-notes.webp" alt="Screen-print notebook cover concept: Eight slices. No notes. over a whole pizza on ruled paper" loading="lazy"><p class="stamp">The line behind the design, Kacey Musgraves, 8 of 8</p><h3>Eight slices. No notes.</h3><p>Concept: a notebook cover. The joke lands because the pages inside are where she writes.</p><details><summary>Where it came from</summary><p>"Her voice is the production. Eight slices. No notes. Houston showed up."</p><a href="https://www.pizzababyreviews.com/reviews">Read the review</a></details></article>
+    </div>
+    <div class="shop" id="shop"><article class="item" data-only="box" data-id="hoodie"><img src="art/hoodie.webp" alt="Born a Meme Hoodie" loading="lazy"><div class="in"><h3>Born a Meme Hoodie</h3><p>Born a meme. Now a critic. Heavyweight, tomato red.</p><div class="buy"><span class="price">$48</span><select aria-label="Size for Born a Meme Hoodie"><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="box" data-id="tee"><img src="art/tee.webp" alt="Meme Certified Tee" loading="lazy"><div class="in"><h3>Meme Certified Tee</h3><p>The OG 2009 seal, on black. Certified.</p><div class="buy"><span class="price">$30</span><select aria-label="Size for Meme Certified Tee"><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="box" data-id="tote"><img src="art/tote.webp" alt="Unfiltered Tote" loading="lazy"><div class="in"><h3>Unfiltered Tote</h3><p>Unfiltered. Unapologetic. Hungry. Fits a pizza box, nearly.</p><div class="buy"><span class="price">$24</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="box" data-id="stickers"><img src="art/stickers.webp" alt="No Free Meals Sticker Sheet" loading="lazy"><div class="in"><h3>No Free Meals Sticker Sheet</h3><p>No sponsors. No free meals. For your laptop and your opinions.</p><div class="buy"><span class="price">$8</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="box" data-id="beanie"><img src="art/beanie.webp" alt="The Day One Beanie" loading="lazy"><div class="in"><h3>The Day One Beanie</h3><p>Hospital-blanket stripes. The hat the slice wore first.</p><div class="buy"><span class="price">$28</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="box" data-id="pins"><img src="art/pins.webp" alt="The Slice Scale Pin Set" loading="lazy"><div class="in"><h3>The Slice Scale Pin Set</h3><p>A slice-scale pin set and the baby in the beanie. Eight slices makes a whole pizza.</p><div class="buy"><span class="price">$35</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="diaries" data-id="b-tee"><img src="art/b-tee.webp" alt="Cowgirl Slice Tee" loading="lazy"><div class="in"><h3>Cowgirl Slice Tee</h3><p>Baby pink, one cowgirl slice, zero apologies.</p><div class="buy"><span class="price">$30</span><select aria-label="Size for Cowgirl Slice Tee"><option>S</option><option>M</option><option>L</option><option>XL</option></select><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="diaries" data-id="b-cap"><img src="art/b-cap.webp" alt="PB Monogram Cap" loading="lazy"><div class="in"><h3>PB Monogram Cap</h3><p>Olive corduroy, pink script. For bad-hair verdict days.</p><div class="buy"><span class="price">$32</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="diaries" data-id="b-tote"><img src="art/b-tote.webp" alt="Pizza Baby Diaries Tote" loading="lazy"><div class="in"><h3>Pizza Baby Diaries Tote</h3><p>Carries a laptop, two textbooks and one strong opinion.</p><div class="buy"><span class="price">$26</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="diaries" data-id="b-stickers"><img src="art/b-stickers.webp" alt="Out of 8 Sticker Sheet" loading="lazy"><div class="in"><h3>Out of 8 Sticker Sheet</h3><p>The pony, the bow, the castle and the scale. Collect them all.</p><div class="buy"><span class="price">$9</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="diaries" data-id="b-case"><img src="art/b-case.webp" alt="Polka-Dot Phone Case" loading="lazy"><div class="in"><h3>Polka-Dot Phone Case</h3><p>For posting verdicts before the cheese cools.</p><div class="buy"><span class="price">$28</span><button class="btn" type="button">Add to bag</button></div></div></article><article class="item" data-only="diaries" data-id="b-mug"><img src="art/b-mug.webp" alt="Eight Slices or Bust Mug" loading="lazy"><div class="in"><h3>Eight Slices or Bust Mug</h3><p>Holds coffee. Judges your breakfast.</p><div class="buy"><span class="price">$18</span><button class="btn" type="button">Add to bag</button></div></div></article></div>
+    <p class="shopnote">These are mockups, not print-ready art, and nothing here is for sale. The bag is a preview saved only on this device, so you can feel how a drop would work. Before anything sells: final wording from Sofia, a sample order, and the real numbers.</p>
+  </div>
+</section>
+
+<section id="lore" class="lore" data-note="The lore">
+  <div class="in wrap">
+    <div style="display:grid;gap:18px" data-note-slot>
+      <p class="stamp" style="color:var(--crust)">The lore</p>
+      <h2>The origin story is wild.</h2>
+      <p>In 2009, a photo of me as a newborn went viral, except the internet swapped me out for a pizza slice. My parents thought it was hilarious. I grew up thinking it was my destiny. Turns out, they were right.</p>
+      <p class="hand" style="color:var(--crust);font-size:30px">before the pizza replaced me.</p>
+    </div>
+    <img class="seal" src="art/tee.webp" alt="The Meme Certified OG 2009 seal on a black tee" loading="lazy" style="aspect-ratio:1;object-fit:cover;object-position:50% 40%">
+  </div>
+</section>
+
+<section class="wrap">
+    <div class="pitch" id="pitch">
+      <p class="stamp">Pitch me</p>
+      <h3>Think your pizza can handle a review?</h3>
+      <p>I'm selective. I'm honest. And I have opinions that people actually read.</p>
+      <div class="rules"><span>No sponsors</span><span>No paid placements</span><span>No free meals</span><span>Just opinions</span></div>
+      <p style="font-size:16px">The pitch box opens with the new site. Spots, shows, albums, snacks: if it deserves an opinion, it's in scope.</p>
+    </div>
+</section>
+
+<section class="gift" id="for-sofia" data-note="Ways to earn">
+  <div class="wrap" data-note-slot>
+    <div class="lid"><h2>For Sofia</h2><p class="stamp">How this site earns, on your terms</p></div>
+    <p style="max-width:66ch;margin-bottom:24px">A gift from Gordon's team: a home for your verdicts that pays for your pizza habit and builds your writing, while you're in college. Your promise stays intact: nobody can buy a verdict. These switch on whenever you want them.</p>
+    <figure style="margin:0 0 28px;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:24px;align-items:center" class="launch">
+      <img src="art/canva-drop.webp" alt="Instagram post: The drop is coming. Merch for people with opinions. Rated out of 8 slices. Born a meme. Now a critic." loading="lazy" style="border-radius:16px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)">
+      <figcaption style="display:grid;gap:10px"><p class="stamp" style="color:var(--tomato)">0, Launch</p><h3 style="font-size:30px">Your launch post is already designed.</h3><p style="font-size:16px">An Instagram post for the merch drop, made in Canva and editable. Ask Gordon to share the Canva file and it's yours to tweak and post.</p></figcaption>
+    </figure>
+    <div class="plan">
+      <div><p class="stamp" style="color:var(--tomato)">1, Merch</p><h3>The drop</h3><p>Print-on-demand (Printful or Printify into a Shopify or Big Cartel store) means no boxes of unsold hoodies. It still costs something: a sample order, store fees, and a thinner margin per piece. The designs above are concepts to choose from, then redraw as print files.</p></div>
+      <div><p class="stamp" style="color:var(--tomato)">2, Newsletter</p><h3>The Slice Report</h3><p>One weekly verdict by email (Beehiiv or Substack, free to start). Your readers, owned by you, not by an algorithm. Paid tiers later.</p></div>
+      <div><p class="stamp" style="color:var(--tomato)">3, Tips</p><h3>Buy the critic a slice</h3><p>A Ko-fi or Buy Me a Coffee link lets fans fund the next review without anyone touching the verdict.</p></div>
+      <div><p class="stamp" style="color:var(--tomato)">4, Craft</p><h3>The critic's desk</h3><p>Four scores and one sentence, every time. Writing the line you'd want screenshotted is the whole skill. Practice it here.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="looks" role="group" aria-label="Choose a look"><span>Two looks, you pick</span><button type="button" data-look="box" aria-pressed="true">Box Press 🍕</button><button type="button" data-look="diaries" aria-pressed="false">Pizza Baby Diaries ✨</button></div>
+<div class="toast" id="toast" role="status"></div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your bag" aria-hidden="true">
+  <header><h2 style="font-size:30px">Your bag</h2><button class="x" type="button" id="close" aria-label="Close bag">×</button></header>
+  <ul id="baglist"></ul>
+  <footer>
+    <p style="display:flex;justify-content:space-between"><span>Preview subtotal</span><b id="subtotal">$0</b></p>
+    <button class="btn" type="button" id="checkout">Preview checkout</button>
+    <p class="checkout-msg" id="checkout-msg" hidden>Just a preview: nothing is for sale yet and nothing was charged. Your bag stays saved on this device, like leftovers but legal.</p>
+  </footer>
+</aside>
+
+<footer class="site">
+  <div class="wrap" style="display:grid;gap:10px">
+    <p class="back"><a href="https://gordonusc.github.io/cale-yarborough/for-cale/">Back to Gordon's invitation</a></p>
+    <b>PIZZA BABY</b>
+    <p>The internet's most opinionated pizza critic. Unfiltered. Unapologetic. Hungry.</p>
+    <p style="opacity:.85">A redesign made as a gift for Sofia by Gordon Bellamy's team (Darby and Astra), with art by Higgsfield and music by ElevenLabs. Her live site: <a href="https://www.pizzababyreviews.com/">pizzababyreviews.com</a>.</p>
+  </div>
+</footer>
+
+<audio id="tune" src="audio/jingle.mp3" loop preload="none"></audio>
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  /* the drop: product copy uses only her own lines */
+  var ITEMS=[].map.call(document.querySelectorAll('#shop .item'),function(el){return {id:el.dataset.id,name:el.querySelector('h3').textContent,price:+el.querySelector('.price').textContent.replace('$',''),img:el.querySelector('img').getAttribute('src')}});
+  var shop=$('#shop');
+  shop.addEventListener('click',function(e){var b=e.target.closest('.btn');if(!b)return;var el=b.closest('.item'),it=ITEMS.filter(function(x){return x.id===el.dataset.id})[0],sz=el.querySelector('select');add(it,sz?sz.value:'')});
+  function renderShop(){}
+  var KEY='pizzababy-bag',bag=[];
+  try{bag=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){bag=[]}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(bag))}catch(e){}}
+  function find(id){return ITEMS.filter(function(i){return i.id===id})[0]}
+  function add(it,size){var k=it.id+'|'+size,ex=bag.filter(function(b){return b.k===k})[0];if(ex)ex.q++;else bag.push({k:k,id:it.id,size:size,q:1});save();paint();open(true)}
+  function paint(){
+    var n=0,sub=0,ul=$('#baglist');ul.innerHTML='';
+    bag.forEach(function(b,i){var it=find(b.id);if(!it)return;n+=b.q;sub+=b.q*it.price;
+      var li=document.createElement('li');li.innerHTML='<img src="'+it.img+'" alt=""><span><b>'+it.name+'</b><br><small>'+(b.size?'Size '+b.size+' · ':'')+'Qty '+b.q+' · $'+(b.q*it.price)+'</small></span><button type="button">Remove</button>';
+      li.querySelector('button').addEventListener('click',function(){bag.splice(i,1);save();paint()});ul.appendChild(li)});
+    if(!bag.length)ul.innerHTML='<li style="display:block;color:var(--muted)">Empty. Bold choice. Even the box has more in it.</li>';
+    $('#bagcount').textContent=n;$('#subtotal').textContent='$'+sub;
+  }
+  var dr=$('#drawer'),sc=$('#scrim');
+  function open(on){dr.classList.toggle('open',on);sc.classList.toggle('on',on);dr.setAttribute('aria-hidden',!on);if(on)$('#close').focus()}
+  $('#bagbtn').addEventListener('click',function(){open(true)});$('#close').addEventListener('click',function(){open(false)});sc.addEventListener('click',function(){open(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')open(false)});
+  $('#checkout').addEventListener('click',function(){$('#checkout-msg').hidden=false});
+  paint();
+
+  /* the critic's desk */
+  var parts=['crust','sauce','cheese','vibe'];
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function coach(line){
+    var t=line.trim(),w=t.split(/\s+/).filter(Boolean).length;
+    if(!t||/^Type the sentence/.test(t))return 'Lead with what it did to you, not what it was.';
+    if(w>24)return 'That’s '+w+' words. A verdict lands harder under 20. Cut the warm-up.';
+    if(/\b(good|nice|delicious|amazing|tasty)\b/i.test(t))return 'Swap the safe word for the specific one. What exactly did it do?';
+    if(!/[.!?]$/.test(t))return 'End it like you mean it. Give it a full stop.';
+    return 'That’s a screenshot line. Ship it.';
+  }
+  function draw(){
+    var v={};parts.forEach(function(p){v[p]=+$('#r-'+p).value;$('#o-'+p).textContent=v[p];$('#s-'+p).textContent=v[p]});
+    var avg=Math.round((v.crust+v.sauce+v.cheese+v.vibe)/4);
+    $('#c-slices').innerHTML=[1,2,3,4,5,6,7,8].map(function(i){return '<span class="'+(i<=avg?'':'off')+'">🍕</span>'}).join('');
+    $('#c-slices').setAttribute('aria-label',avg+' of 8 slices');
+    $('#c-cap').textContent=avg+'/8 · '+['','a cry for help','edible, technically','the microwave won','fine. FINE.','a solid weeknight','would fight a stranger for it','the missing slice is personal','a whole pizza. legend status.'][avg];
+    $('#c-spot').textContent=$('#f-spot').value||'Your next slice';$('#c-kind').textContent=$('#f-kind').value;
+    var line=$('#f-line').value;$('#c-line').innerHTML=esc(line);$('#coach').textContent=coach(line);
+  }
+  ['#f-spot','#f-kind','#f-line','#r-crust','#r-sauce','#r-cheese','#r-vibe'].forEach(function(s){$(s).addEventListener('input',draw)});draw();
+
+  /* two looks */
+  var root=document.documentElement,LK='pizzababy-look';
+  /* a deep link (#diaries, #boxpress, #box) wins for this visit without overwriting the visitor's own saved choice */
+  function setLook(l,keep){root.setAttribute('data-look',l);document.querySelectorAll('.looks button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.look===l)});renderShop(l);if(keep){try{localStorage.setItem(LK,l)}catch(e){}}}
+  function hashLook(){var h=location.hash.toLowerCase();return h==='#diaries'?'diaries':(h==='#boxpress'||h==='#box')?'box':''}
+  var start='box';try{start=localStorage.getItem(LK)||'box'}catch(e){}if(hashLook())start=hashLook();
+  window.addEventListener('hashchange',function(){var l=hashLook();if(l)setLook(l)});
+  document.querySelectorAll('.looks button').forEach(function(b){b.addEventListener('click',function(){setLook(b.dataset.look,true);toast(b.dataset.look==='diaries'?'Diary mode. Feelings included.':'Box Press. Opinions extra loud.')})});
+  setLook(start);
+  var tt;function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},1800)}
+  var pokes=0,lines=['Gently.','She is literally a newborn.','Stop poking the baby.','Okay you get a sticker. (No you do not.)'];
+  var baby=$('#baby');if(baby){baby.style.cursor='pointer';baby.addEventListener('click',function(){toast(lines[Math.min(pokes++,lines.length-1)])})}
+  /* jingle, opt-in */
+  var tune=$('#tune'),jb=$('#jingle');
+  jb.addEventListener('click',function(){if(tune.paused){tune.volume=.45;tune.play().then(function(){jb.textContent='Music on';jb.setAttribute('aria-pressed','true')}).catch(function(){})}else{tune.pause();jb.textContent='Music off';jb.setAttribute('aria-pressed','false')}});
+
+  /* joy layer: confetti, sfx, draggable stickers, pop-in slices, tilt, roulette */
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sfx={pop:new Audio('audio/pop.mp3'),spin:new Audio('audio/spin.mp3')};
+  var pb=$('#pops');pb.addEventListener('click',function(){var on=pb.getAttribute('aria-pressed')!=='true';pb.setAttribute('aria-pressed',on);pb.textContent=on?'Effects on':'Effects off';if(on)play('pop')});
+  function soundOn(){return pb.getAttribute('aria-pressed')==='true'}
+  function play(n){if(!soundOn())return;try{var a=sfx[n].cloneNode();a.volume=.7;a.play().catch(function(){})}catch(e){}}
+  function burst(n){if(reduce)return;var em=root.getAttribute('data-look')==='diaries'?['✨','🍕','💖','⭐','🎀']:['🍕','🍕','⭐','🧀','🍅'];
+    for(var i=0;i<(n||26);i++){var c=document.createElement('span');c.className='confetti';c.textContent=em[i%em.length];
+      c.style.left=(Math.random()*100)+'vw';c.style.setProperty('--dx',(Math.random()*160-80)+'px');c.style.setProperty('--rot',(Math.random()*720-360)+'deg');c.style.setProperty('--t',(1.4+Math.random()*1.4)+'s');
+      document.body.appendChild(c);setTimeout(function(x){return function(){x.remove()}}(c),3200)}}
+  document.addEventListener('click',function(e){var b=e.target.closest('#shop .btn');if(b){burst(18);play('pop')}});
+  document.querySelectorAll('.looks button').forEach(function(b){b.addEventListener('click',function(){burst(30);play('pop')})});
+  var last8=false;['#r-crust','#r-sauce','#r-cheese','#r-vibe'].forEach(function(id){$(id).addEventListener('change',function(){var all=['crust','sauce','cheese','vibe'].every(function(p){return +$('#r-'+p).value===8});if(all&&!last8){burst(40);play('pop');toast('A whole pizza. Legend status.')}last8=all})});
+  /* stickers you can move */
+  document.querySelectorAll('.sticker').forEach(function(st){var sx,sy,ox=0,oy=0,drag=false,base=getComputedStyle(st).transform;
+    st.addEventListener('pointerdown',function(e){drag=true;sx=e.clientX-ox;sy=e.clientY-oy;st.setPointerCapture(e.pointerId)});
+    st.addEventListener('pointermove',function(e){if(!drag)return;ox=e.clientX-sx;oy=e.clientY-sy;st.style.translate=ox+'px '+oy+'px'});
+    st.addEventListener('pointerup',function(){if(drag&&Math.abs(ox)+Math.abs(oy)>30)play('pop');drag=false})});
+  /* slices pop in as cards arrive */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var c=en.target;[].forEach.call(c.querySelectorAll('.slices span'),function(sp,i){sp.style.animationDelay=(i*70)+'ms'});c.classList.add('in');io.unobserve(c)}})},{threshold:.35}):null;
+  document.querySelectorAll('.vcard').forEach(function(c){if(io&&!reduce)io.observe(c);else c.classList.add('in')});
+  /* playful tilt */
+  if(!reduce&&matchMedia('(pointer:fine)').matches)document.addEventListener('pointermove',function(e){var c=e.target.closest('.vcard,.item');document.querySelectorAll('.vcard,.item').forEach(function(x){if(x!==c)x.style.transform=''});if(!c)return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(700px) rotateX('+(-y*6)+'deg) rotateY('+(x*8)+'deg) translateY(-4px)'});
+  /* spin the slice: lands on one of her real verdicts */
+  var cards=[].slice.call(document.querySelectorAll('#verdicts .vcard:not(.sample)'));
+  $('#spinbtn').addEventListener('click',function(){var w=$('#wheel'),i=0,n=reduce?1:14,pick;play('spin');w.classList.add('go');cards.forEach(function(c){c.classList.remove('pick')});
+    (function step(){pick=cards[Math.floor(Math.random()*cards.length)];w.textContent=pick.querySelector('h3').textContent;if(++i<n)setTimeout(step,60+i*14);else{w.classList.remove('go');w.textContent=pick.querySelector('h3').textContent+', '+pick.querySelector('.slices').getAttribute('aria-label');pick.classList.add('pick');burst(20);var g=$('#spingo');if(g)g.hidden=false;setTimeout(function(){pick.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})},500)}})()});
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&!tune.paused){tune.pause();jb.textContent='Music off';jb.setAttribute('aria-pressed','false')}});
+})();
+</script>
+<script>window.NOTES_CONFIG={site:"pizzababy",who:"Sofia",title:"Pizza Baby Reviews redesign",label:"Notes for Gordon",lookNames:{box:"Look A · Box Press",diaries:"Look B · Pizza Baby Diaries"}};</script>
+<script src="notes.js"></script>
+</body>
+</html>
