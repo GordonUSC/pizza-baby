@@ -11,25 +11,25 @@
   var css = document.createElement('style');
   css.textContent = [
     'html:not(.nf-on) .nf-bar{display:none!important}',
-    '.nf-dock{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;gap:8px}',
-    '.nf-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:22px 0 0;padding:10px 12px;border:1px dashed currentColor;border-radius:14px;opacity:.92;font:600 14px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif}',
+    '.nf-dock{position:static;grid-column:1/-1;display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}',
+    '.nf-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:22px 0 0;padding:10px 12px;border:1px dashed currentColor;border-radius:0;opacity:.92;font:600 14px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif}',
     '.nf-bar b{font-weight:800;margin-right:4px}',
-    '.nf-bar button{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:8px 12px;font:700 13px system-ui,-apple-system,sans-serif;cursor:pointer;min-height:40px}',
+    '.nf-bar button{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;border-radius:0;padding:8px 12px;font:700 13px system-ui,-apple-system,sans-serif;cursor:pointer;min-height:40px}',
     '.nf-bar button[aria-pressed="true"]{background:currentColor}',
     '.nf-bar button[aria-pressed="true"] span{filter:invert(1)}',
-    '.nf-bar input{flex:1 1 220px;min-width:0;border:1px solid currentColor;background:transparent;color:inherit;border-radius:10px;padding:9px 11px;font:400 15px system-ui,-apple-system,sans-serif;min-height:40px}',
-    '.nf-fab{appearance:none;border:0;border-radius:999px;padding:12px 16px;background:#111;color:#fff;font:800 14px system-ui,-apple-system,sans-serif;box-shadow:0 8px 24px #0006;cursor:pointer;min-height:46px}',
+    '.nf-bar input{flex:1 1 220px;min-width:0;border:1px solid currentColor;background:transparent;color:inherit;border-radius:0;padding:9px 11px;font:400 15px system-ui,-apple-system,sans-serif;min-height:40px}',
+    '.nf-fab{appearance:none;border:0;border-radius:0;padding:12px 16px;background:#111;color:#fff;font:800 14px system-ui,-apple-system,sans-serif;box-shadow:none;cursor:pointer;min-height:46px}',
     '.nf-fab[aria-pressed="true"]{background:#ffd166;color:#111}',
     'html:not(.nf-on) .nf-send{display:none}',
-    '.nf-fab i{font-style:normal;background:#ffd166;color:#111;border-radius:999px;padding:1px 8px;margin-left:8px}',
-    '.nf-panel{position:fixed;right:14px;bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:71;width:min(420px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;background:#fff;color:#111;border-radius:18px;box-shadow:0 20px 60px #0007;padding:18px;display:grid;gap:12px;font:400 15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}',
+    '.nf-fab i{font-style:normal;background:#ffd166;color:#111;border-radius:0;padding:1px 8px;margin-left:8px}',
+    '.nf-panel{position:fixed;right:14px;bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:71;width:min(420px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;background:#fff;color:#111;border-radius:0;box-shadow:0 20px 60px #0007;padding:18px;display:grid;gap:12px;font:400 15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}',
     '.nf-panel[hidden]{display:none!important}',
     '.nf-panel h2{font:800 20px system-ui,-apple-system,sans-serif;margin:0;text-transform:none;letter-spacing:0}',
     '.nf-panel ul{margin:0;padding-left:18px;display:grid;gap:6px}',
-    '.nf-panel input{width:100%;border:1px solid #bbb;border-radius:10px;padding:10px;font:400 15px system-ui,-apple-system,sans-serif;min-height:44px}',
-    '.nf-panel textarea{width:100%;min-height:80px;border:1px solid #bbb;border-radius:10px;padding:10px;font:400 15px system-ui,-apple-system,sans-serif}',
+    '.nf-panel input{width:100%;border:1px solid #bbb;border-radius:0;padding:10px;font:400 15px system-ui,-apple-system,sans-serif;min-height:44px}',
+    '.nf-panel textarea{width:100%;min-height:80px;border:1px solid #bbb;border-radius:0;padding:10px;font:400 15px system-ui,-apple-system,sans-serif}',
     '.nf-row{display:flex;flex-wrap:wrap;gap:8px}',
-    '.nf-row a,.nf-row button{appearance:none;border:1px solid #111;background:#111;color:#fff;text-decoration:none;border-radius:999px;padding:10px 14px;font:700 14px system-ui,-apple-system,sans-serif;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}',
+    '.nf-row a,.nf-row button{appearance:none;border:1px solid #111;background:#111;color:#fff;text-decoration:none;border-radius:0;padding:10px 14px;font:700 14px system-ui,-apple-system,sans-serif;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}',
     '.nf-row .ghost{background:#fff;color:#111}',
     '.nf-small{color:#555;font-size:13px}',
     '@media (max-width:560px){.nf-dock{bottom:calc(76px + env(safe-area-inset-bottom,0px))}.nf-panel{bottom:calc(132px + env(safe-area-inset-bottom,0px))}}'
@@ -68,7 +68,7 @@
   sw.addEventListener('click', function () { setMode(!document.documentElement.classList.contains('nf-on')); });
   var panel = document.createElement('div');
   panel.className = 'nf-panel'; panel.hidden = true; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Your notes');
-  document.body.appendChild(dock); document.body.appendChild(panel);
+  document.querySelector('footer.site').appendChild(dock); document.body.appendChild(panel);
 
   function text() {
     var lines = [(cfg.title || document.title) + ': notes from ' + (data._who || 'a reviewer')];
@@ -90,7 +90,7 @@
       '<p class="nf-small">With notes on, tap Love it or Change it on any section, add a line, and send it all in one go. Saved only on this device.</p>' +
       '<label class="nf-small" for="nf-who">Who is reviewing?</label><input id="nf-who" maxlength="60" placeholder="Your name" autocomplete="off">' +
       '<label class="nf-small" for="nf-overall">Anything else?</label><textarea id="nf-overall" maxlength="600" placeholder="The big picture, in a sentence or two"></textarea>' +
-      '<pre style="white-space:pre-wrap;margin:0;background:#f4f4f4;border-radius:10px;padding:10px;font:400 13px ui-monospace,Menlo,monospace" id="nf-preview"></pre>' +
+      '<pre style="white-space:pre-wrap;margin:0;background:#f4f4f4;border-radius:0;padding:10px;font:400 13px ui-monospace,Menlo,monospace" id="nf-preview"></pre>' +
       '<div class="nf-row"><button type="button" id="nf-copy">Copy notes</button><a id="nf-sms" href="#">Text them</a><a id="nf-mail" class="ghost" href="#">Email them</a><button type="button" class="ghost" id="nf-close">Close</button></div>' +
       '<p class="nf-small" id="nf-status" role="status"></p>';
     var ta = panel.querySelector('#nf-overall'); ta.value = data._overall || '';
