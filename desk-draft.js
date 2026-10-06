@@ -5,7 +5,11 @@
   var ids = ['f-spot', 'f-kind', 'f-line', 'r-crust', 'r-sauce', 'r-cheese', 'r-vibe'];
   var fields = ids.map(function (id) { return document.getElementById(id); });
   var status = document.getElementById('draft-status');
-  if (!status || fields.some(function (field) { return !field; })) return;
+  var clear = document.getElementById('clear-draft');
+  if (!status || !clear || fields.some(function (field) { return !field; })) return;
+  // Shown only once the script can actually keep and clear the draft (hidden with JS off).
+  status.hidden = false;
+  clear.hidden = false;
   var defaults = fields.map(function (field) { return field.value; });
   var storageOK = true;
   function unavailable() {
@@ -38,7 +42,7 @@
     } catch (error) { unavailable(); }
   }
   fields.forEach(function (field) { field.addEventListener('input', save); });
-  document.getElementById('clear-draft').addEventListener('click', function () {
+  clear.addEventListener('click', function () {
     if (!window.confirm('Clear this draft and reset the critic’s desk? Download your verdict first if you want to keep it.')) return;
     fields.forEach(function (field, index) { field.value = defaults[index]; });
     // Refresh the scorecard before removing the tab copy written by the input event.

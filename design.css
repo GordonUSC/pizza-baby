@@ -26,4 +26,4 @@ html[data-look=diaries] .top{position:relative;background:#fcf8e9;border-bottom:
 
 /* A quiet, keyboard-accessible reset beside the private draft status. */
 #clear-draft{background:none;border:0;padding:8px 0;min-height:44px;margin:6px 0 14px;font-size:13px;text-decoration:underline;text-underline-offset:4px}
-#spinbtn:disabled{cursor:wait;opacity:.7}
+#spinbtn[aria-disabled="true"]{cursor:wait;opacity:.7}
