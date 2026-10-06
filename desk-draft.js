@@ -1,15 +1,13 @@
 /* Keep an unfinished verdict across the two looks, in this browser tab only. */
 (function () {
   'use strict';
+  if (document.documentElement.dataset.pizzaReady !== 'true') return;
   var key = 'pizzababy-desk-session-v1';
   var ids = ['f-spot', 'f-kind', 'f-line', 'r-crust', 'r-sauce', 'r-cheese', 'r-vibe'];
   var fields = ids.map(function (id) { return document.getElementById(id); });
   var status = document.getElementById('draft-status');
   var clear = document.getElementById('clear-draft');
   if (!status || !clear || fields.some(function (field) { return !field; })) return;
-  // Shown only once the script can actually keep and clear the draft (hidden with JS off).
-  status.hidden = false;
-  clear.hidden = false;
   var defaults = fields.map(function (field) { return field.value; });
   var storageOK = true;
   function unavailable() {
@@ -51,4 +49,6 @@
     if (storageOK) status.textContent = 'Draft cleared. A fresh verdict is yours to write.';
     fields[0].focus();
   });
+  status.hidden = false;
+  clear.hidden = false;
 })();
